@@ -1,0 +1,12 @@
+D:\Github\PSStudentExamScoreReport\bin\Debug\PSStudentExamScoreReport.dll
+D:\Github\PSStudentExamScoreReport\bin\Debug\PSStudentExamScoreReport.pdb
+D:\Github\PSStudentExamScoreReport\bin\Debug\FISCA.Data.dll
+D:\Github\PSStudentExamScoreReport\bin\Debug\FISCA.dll
+D:\Github\PSStudentExamScoreReport\bin\Debug\FISCA.Permission.dll
+D:\Github\PSStudentExamScoreReport\bin\Debug\FISCA.Presentation.dll
+D:\Github\PSStudentExamScoreReport\obj\Debug\PSStudentExamScoreReport.csprojResolveAssemblyReference.cache
+D:\Github\PSStudentExamScoreReport\obj\Debug\PSStudentExamScoreReport.MainForm.resources
+D:\Github\PSStudentExamScoreReport\obj\Debug\PSStudentExamScoreReport.Properties.Resources.resources
+D:\Github\PSStudentExamScoreReport\obj\Debug\PSStudentExamScoreReport.csproj.GenerateResource.Cache
+D:\Github\PSStudentExamScoreReport\obj\Debug\PSStudentExamScoreReport.dll
+D:\Github\PSStudentExamScoreReport\obj\Debug\PSStudentExamScoreReport.pdb

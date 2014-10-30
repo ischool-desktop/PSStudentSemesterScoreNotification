@@ -1,0 +1,8 @@
+D:\Github\PSStudentSemesterScoreNotification\obj\Debug\PSStudentSemesterScoreNotification.csproj.GenerateResource.Cache
+D:\Github\PSStudentSemesterScoreNotification\obj\Debug\PSStudentSemesterScoreNotification.Properties.Resources.resources
+D:\Github\PSStudentSemesterScoreNotification\bin\Debug\PSStudentSemesterScoreNotification.dll
+D:\Github\PSStudentSemesterScoreNotification\bin\Debug\PSStudentSemesterScoreNotification.pdb
+D:\Github\PSStudentSemesterScoreNotification\obj\Debug\PSStudentSemesterScoreNotification.MainForm.resources
+D:\Github\PSStudentSemesterScoreNotification\obj\Debug\PSStudentSemesterScoreNotification.dll
+D:\Github\PSStudentSemesterScoreNotification\obj\Debug\PSStudentSemesterScoreNotification.pdb
+D:\Github\PSStudentSemesterScoreNotification\obj\Debug\PSStudentSemesterScoreNotification.csprojResolveAssemblyReference.cache
