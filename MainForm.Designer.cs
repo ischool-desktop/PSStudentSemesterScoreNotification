@@ -143,7 +143,7 @@
 			this.Controls.Add(this.cboSemester);
 			this.DoubleBuffered = true;
 			this.Name = "MainForm";
-			this.Text = "學期成績通知單";
+			this.Text = "學期表現成績單";
 			this.ResumeLayout(false);
 			this.PerformLayout();
 

@@ -66,7 +66,7 @@ namespace PSStudentSemesterScoreNotification
 				SaveFileDialog SaveFileDialog1 = new SaveFileDialog();
 
 				SaveFileDialog1.Filter = "Word (*.doc)|*.doc|所有檔案 (*.*)|*.*";
-				SaveFileDialog1.FileName = "學期學習表現通知單(國小)";
+				SaveFileDialog1.FileName = "學期學習表現通知單(國小)" + string.Format("{0:MM_dd_yy_H_mm_ss}", DateTime.Now);
 
 				if (SaveFileDialog1.ShowDialog() == DialogResult.OK)
 				{
@@ -384,7 +384,7 @@ namespace PSStudentSemesterScoreNotification
 			}
 
 			//預設名稱
-			TemplateForm.DefaultFileName = "學期學習表現通知單(國小)";
+			TemplateForm.DefaultFileName = "學期學習表現通知單(國小)樣板";
 			//如果回傳為OK
 			if (TemplateForm.ShowDialog() == DialogResult.OK)
 			{

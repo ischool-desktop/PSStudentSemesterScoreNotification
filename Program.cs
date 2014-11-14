@@ -17,16 +17,16 @@ namespace PSStudentSemesterScoreNotification
 		public static void Main()
 		{
 			Catalog detail = RoleAclSource.Instance["學生"]["報表"];
-			detail.Add(new ReportFeature("PSStudentSemesterScoreNotification - {E13FAD4F-7C75-479A-9B43-C617EF8F90C0}", "學期評量成績單(國小)"));
+			detail.Add(new ReportFeature("PSStudentSemesterScoreNotification - {E13FAD4F-7C75-479A-9B43-C617EF8F90C0}", "國小學期表現成績單"));
 
-			MenuButton mb = FISCA.Presentation.MotherForm.RibbonBarItems["學生", "資料統計"]["報表"]["成績相關報表"]["學期評量成績單(國小)"];
+			MenuButton mb = FISCA.Presentation.MotherForm.RibbonBarItems["學生", "資料統計"]["報表"]["成績相關報表"]["國小學期表現成績單"];
             mb.Enable = false;
             mb.Click += delegate
             {
 				new MainForm(EnterType.Student).ShowDialog();
             };
 
-			MenuButton mb2 = FISCA.Presentation.MotherForm.RibbonBarItems["班級", "資料統計"]["報表"]["成績相關報表"]["學期評量成績單(國小)"];
+			MenuButton mb2 = FISCA.Presentation.MotherForm.RibbonBarItems["班級", "資料統計"]["報表"]["成績相關報表"]["國小學期表現成績單"];
             mb2.Enable = false;
             mb2.Click += delegate
             {
