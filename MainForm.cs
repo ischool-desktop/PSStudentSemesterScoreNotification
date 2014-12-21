@@ -39,6 +39,8 @@ namespace PSStudentSemesterScoreNotification
 		//等第對照
 		private DegreeMapper _degreeMapper;
 
+		private QueryHelper queryHelper = new QueryHelper();
+
 		BackgroundWorker BGW = new BackgroundWorker();
 		private string CadreConfig = "PSStudentSemesterScoreNotification.cs";
 
@@ -160,38 +162,6 @@ namespace PSStudentSemesterScoreNotification
 			string DatePrint = ServerTime();
 			string schoolName = K12.Data.School.ChineseName;
 			List<JHStudentRecord> students = GetStudents();
-			#region 事病假處理
-			/*
-			List<AttendanceRecord> studentAttend = Attendance.SelectBySchoolYearAndSemester(students, schoolYear, semester);
-			Dictionary<string,string> studentAttendDic = new Dictionary<string,string>();
-
-			decimal Leave = 0, Sick = 0;
-			foreach (AttendanceRecord ar in studentAttend)
-			{
-				foreach (AttendancePeriod ap in ar.PeriodDetail)
-				{
-
-					if (ap.AbsenceType == "事假")
-					{
-						Leave++;
-					}
-
-					if (ap.AbsenceType == "病假")
-					{
-						Sick++;
-					}
-				}
-				if (!studentAttendDic.ContainsKey(ar.RefStudentID + "_Leave"))
-				{
-					studentAttendDic.Add(ar.RefStudentID + "_Leave", Leave + "");
-				}
-				if (!studentAttendDic.ContainsKey(ar.RefStudentID + "_Sick"))
-				{
-					studentAttendDic.Add(ar.RefStudentID + "_Sick", Sick + "");
-				}
-			}
-			 **/
-			#endregion
 			List<SemesterScoreRecord> ssrl = K12.Data.SemesterScore.SelectByStudents(students);
 			List<SemesterHistoryRecord> semesterHistory = SemesterHistory.SelectByStudents(students);
 			Dictionary<string, SemesterHistoryRecord> studentHistoryDic = new Dictionary<string, SemesterHistoryRecord>();
@@ -218,7 +188,6 @@ namespace PSStudentSemesterScoreNotification
 
 			foreach (JHSemesterScoreRecord ss in jss)
 			{
-				//ss.CourseLearnScore
 				foreach (DomainScore ds in ss.Domains.Values)
 				{
 					string studentID = ds.RefStudentID;
@@ -286,10 +255,19 @@ namespace PSStudentSemesterScoreNotification
 			}
 
 			_template = new Document(new MemoryStream(ConfigurationInCadre.Template.ToBinary()));
-
+			
 			//new MemoryStream(ConfigurationInCadre.Template.ToBinary)
 			foreach (JHStudentRecord JHsr in students)
 			{
+				string personalDays = "", sickDays = "";
+				string sql = "select ref_student_id,personal_days,sick_days from $ischool.elementaryabsence where ref_student_id in (" + JHsr.ID + ") and school_year=" + _schoolYear + " and semester=" + _semester;
+				DataTable dt = queryHelper.Select(sql);
+				foreach (DataRow row in dt.Rows)
+				{
+					 personalDays = "" + row["personal_days"];
+					 sickDays = "" + row["sick_days"];
+				}
+				
 				string teacherRemark = "";
 				Document perPage = _template.Clone();
 				Dictionary<String, String> mergeDic = new Dictionary<string, string>();
@@ -301,8 +279,8 @@ namespace PSStudentSemesterScoreNotification
 				mergeDic.Add("班級", JHsr.Class.Name);
 				mergeDic.Add("座號", JHsr.SeatNo + "");
 				mergeDic.Add("姓名", JHsr.Name);
-				//mergeDic.Add("事假日數",studentAttendDic[JHsr.ID+"_Leave"]);
-				//mergeDic.Add("病假日數",studentAttendDic[JHsr.ID+"_Sick"]);
+				mergeDic.Add("事假日數",personalDays);
+				mergeDic.Add("病假日數", sickDays);
 
 				/// <summary>
 				/// 列印學生出席日數
